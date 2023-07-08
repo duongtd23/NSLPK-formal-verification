@@ -1,4 +1,4 @@
--- load examples/nslpk2/nslpk.cafe . load examples/nslpk2/invariants.cafe .
+-- load nslpk.cafe . load invariants.cafe .
 ipsgopen INV .
   inv inv6(S:Sys,A2:Prin,A:Prin,B:Prin,N:Nonce,N2:Nonce) .
   inv inv26(S:Sys,A:Prin,B:Prin,N:Nonce,N2:Nonce,N3:Nonce) .
@@ -6,8 +6,8 @@ ipsgopen INV .
     N:Nonce,N2:Nonce,N3:Nonce)
     induction on S:Sys .
 close
-set-output examples/nslpk2/inv25.cafe .
+set-output inv25.cafe .
 :save-proof .
 
 eof
-load examples/nslpk2/input25.cafe .
+load inputs/input25.cafe .
