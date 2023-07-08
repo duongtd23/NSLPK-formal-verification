@@ -1,0 +1,10 @@
+open INV .
+  ops s1 s2 s3 : -> Sys .
+  ops a b : -> Prin .
+  ops n n2 : -> Nonce .
+  eq (n = n2) = false .
+  eq s1 = send1(init, a,b,n) .
+  eq s2 = send2(s1, a,a,b,aenc(pubK(b),a || n), n, n2) .
+  eq s3 = send3(s2, b,a,b,aenc(pubK(a),n || n2 || b), n, n2) .
+  red check(s3,a,b,n,n2) .
+close

@@ -1,0 +1,38 @@
+open PRED .
+  ops s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 : -> Sys .
+  ops a b : -> Prin .
+  ops n n2 : -> Nonce .
+  ops d d2 : -> Data .
+  eq (n = n2) = false .
+  eq (a = intru) = false .
+  eq (b = intru) = false .
+  eq d = aenc(pubK(b), a || n) .
+  eq d2 = aenc(pubK(b), n2) .
+
+-- 'a' sends to intruder nonce 'n' under a msg1 message
+  eq s1 = send1(init, a,intru,n) .
+
+-- intruder gets 'n'
+  eq s2 = g21(s1,intru, a || n) .
+-- intruder encrypts 'n' by public key of 'b'
+  eq s3 = gBasic(s2,a,pubK(b)) .
+  eq s4 = g2(s3,pubK(b), a || n) .
+-- intruder impersonate 'a' to send 'n' to 'b' under a msg1 message
+  eq s5 = fkmsg1(s4,a,b,aenc(pubK(b), a || n)) .
+
+-- 'b' believes the msg1 message is come from 'a', replying to 'a' with a msg2 message containing 'n2'
+  eq s6 = send2(s5,intru,a,b,d,n,n2) .
+-- intruder explicitly sends that msg2 message to 'a'
+  eq s7 = fkmsg2(s6,intru,a,aenc(pubK(a), n || n2)) .
+-- 'a' on receiption of that msg2 message from intruder replies to intruder with a msg3 message, which contains 'n2' encrypted under intruder's public key
+  eq s8 = send3(s7,intru,a,intru,aenc(pubK(a), n || n2),n,n2) .
+-- intruder decrypts the ciphertext sent from 'a', gets 'n2'
+  eq s9 = g21(s8,intru, n2) .
+-- intruder impersonates 'a', sends 'n2' to 'b'
+  eq s10 = g2(s9,pubK(b), n2) .
+  eq s11 = fkmsg3(s10,a,b,d2) .
+  red keySe(s11,intru,a,b,n,n2,d,d2) .
+close
+
+eof
+load nspk/nspk.cafe . load nspk/ctx.cafe .

@@ -1,0 +1,1024 @@
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op s : -> Sys .
+  red auth2(init,a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(fkmsg1(s,r1,r2,r3),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(fkmsg1(s,r1,r2,r3),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(fkmsg2(s,r1,r2,r3),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(fkmsg2(s,r1,r2,r3),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  eq a = r1 .
+  eq a2 = intru .
+  eq b = r2 .
+  eq d2 = r3 .
+  eq r1 = intru .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(fkmsg3(s,r1,r2,r3),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  eq a = r1 .
+  eq a2 = intru .
+  eq b = r2 .
+  eq d2 = r3 .
+  eq (r1 = intru) = false .
+  eq r2 = intru .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(fkmsg3(s,r1,r2,r3),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  eq a = r1 .
+  eq a2 = intru .
+  eq b = r2 .
+  eq d2 = r3 .
+  eq (r1 = intru) = false .
+  eq (r2 = intru) = false .
+  eq r3 = aenc(pubK(r2),n2) .
+  eq (aenc(pubK(r2),n2) \in knl(s)) = true .
+  eq (msg3(intru,r1,r2,aenc(pubK(r2),n2)) \in nw(s)) = true .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(fkmsg3(s,r1,r2,r3),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  eq a = r1 .
+  eq a2 = intru .
+  eq b = r2 .
+  eq d2 = r3 .
+  eq (r1 = intru) = false .
+  eq (r2 = intru) = false .
+  eq r3 = aenc(pubK(r2),n2) .
+  eq (aenc(pubK(r2),n2) \in knl(s)) = true .
+  eq (msg3(intru,r1,r2,aenc(pubK(r2),n2)) \in nw(s)) = false .
+  eq (msg3(r1,r1,r2,aenc(pubK(r2),n2)) \in nw(s)) = true .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(fkmsg3(s,r1,r2,r3),a2,a,b,n,n2,d2) .
+close
+
+--> true, use inv20 as a lemma
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  eq a = r1 .
+  eq a2 = intru .
+  eq b = r2 .
+  eq d2 = r3 .
+  eq (r1 = intru) = false .
+  eq (r2 = intru) = false .
+  eq r3 = aenc(pubK(r2),n2) .
+  eq (aenc(pubK(r2),n2) \in knl(s)) = true .
+  eq (msg3(intru,r1,r2,aenc(pubK(r2),n2)) \in nw(s)) = false .
+  eq (msg3(r1,r1,r2,aenc(pubK(r2),n2)) \in nw(s)) = false .
+  eq (msg2(r2,r2,r1,aenc(pubK(r1),(n || n2 || r2))) \in nw(s)) = true .
+  red inv20(s,r1,r2,n,n2) implies auth2(s,a2,a,b,n,n2,d2) implies auth2(fkmsg3(s,r1,r2,r3),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  eq a = r1 .
+  eq a2 = intru .
+  eq b = r2 .
+  eq d2 = r3 .
+  eq (r1 = intru) = false .
+  eq (r2 = intru) = false .
+  eq r3 = aenc(pubK(r2),n2) .
+  eq (aenc(pubK(r2),n2) \in knl(s)) = true .
+  eq (msg3(intru,r1,r2,aenc(pubK(r2),n2)) \in nw(s)) = false .
+  eq (msg3(r1,r1,r2,aenc(pubK(r2),n2)) \in nw(s)) = false .
+  eq (msg2(r2,r2,r1,aenc(pubK(r1),(n || n2 || r2))) \in nw(s)) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(fkmsg3(s,r1,r2,r3),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  eq a = r1 .
+  eq a2 = intru .
+  eq b = r2 .
+  eq d2 = r3 .
+  eq (r1 = intru) = false .
+  eq (r2 = intru) = false .
+  eq r3 = aenc(pubK(r2),n2) .
+  eq (aenc(pubK(r2),n2) \in knl(s)) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(fkmsg3(s,r1,r2,r3),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  eq a = r1 .
+  eq a2 = intru .
+  eq b = r2 .
+  eq d2 = r3 .
+  eq (r1 = intru) = false .
+  eq (r2 = intru) = false .
+  eq (r3 = aenc(pubK(r2),n2)) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(fkmsg3(s,r1,r2,r3),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  eq a = r1 .
+  eq a2 = intru .
+  eq b = r2 .
+  eq (d2 = r3) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(fkmsg3(s,r1,r2,r3),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  eq a = r1 .
+  eq a2 = intru .
+  eq (b = r2) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(fkmsg3(s,r1,r2,r3),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  eq a = r1 .
+  eq (a2 = intru) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(fkmsg3(s,r1,r2,r3),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  eq (a = r1) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(fkmsg3(s,r1,r2,r3),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(fkmsg3(s,r1,r2,r3),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Data .
+  op r2 : -> DataL .
+  op s : -> Sys .
+  eq (r1 \in knl(s)) = true .
+  eq (r2 \in knl(s)) = true .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(g2(s,r1,r2),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Data .
+  op r2 : -> DataL .
+  op s : -> Sys .
+  eq (r1 \in knl(s)) = true .
+  eq (r2 \in knl(s)) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(g2(s,r1,r2),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Data .
+  op r2 : -> DataL .
+  op s : -> Sys .
+  eq (r1 \in knl(s)) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(g2(s,r1,r2),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> DataL .
+  op s : -> Sys .
+  eq (priK(r1) \in knl(s)) = true .
+  eq (aenc(pubK(r1),r2) \in knl(s)) = true .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(g21(s,r1,r2),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> DataL .
+  op s : -> Sys .
+  eq (priK(r1) \in knl(s)) = true .
+  eq (aenc(pubK(r1),r2) \in knl(s)) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(g21(s,r1,r2),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> DataL .
+  op s : -> Sys .
+  eq (priK(r1) \in knl(s)) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(g21(s,r1,r2),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> PubKey .
+  op s : -> Sys .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(gBasic(s,r1,r2),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Nonce .
+  op s : -> Sys .
+  eq (r1 \in unonce(s)) = true .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(gNonce(s,r1),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Nonce .
+  op s : -> Sys .
+  eq (r1 \in unonce(s)) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(gNonce(s,r1),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Nonce .
+  op s : -> Sys .
+  eq (r3 \in unonce(s)) = true .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(send1(s,r1,r2,r3),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Nonce .
+  op s : -> Sys .
+  eq (r3 \in unonce(s)) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(send1(s,r1,r2,r3),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = true .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(send2(s,r1,r2,r3,r4,r5,r6),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq a = r2 .
+  eq b = r3 .
+  eq n = r5 .
+  eq n2 = r6 .
+  eq r2 = intru .
+  eq (msg1(r1,intru,r3,aenc(pubK(r3),(intru || r5))) \in nw(s)) = true .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(send2(s,r1,r2,r3,r4,r5,r6),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq a = r2 .
+  eq b = r3 .
+  eq n = r5 .
+  eq n2 = r6 .
+  eq r2 = intru .
+  eq (msg1(r1,intru,r3,aenc(pubK(r3),(intru || r5))) \in nw(s)) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(send2(s,r1,r2,r3,r4,r5,r6),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq a = r2 .
+  eq b = r3 .
+  eq n = r5 .
+  eq n2 = r6 .
+  eq (r2 = intru) = false .
+  eq r3 = intru .
+  eq (msg1(r1,r2,intru,aenc(pubK(intru),(r2 || r5))) \in nw(s)) = true .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(send2(s,r1,r2,r3,r4,r5,r6),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq a = r2 .
+  eq b = r3 .
+  eq n = r5 .
+  eq n2 = r6 .
+  eq (r2 = intru) = false .
+  eq r3 = intru .
+  eq (msg1(r1,r2,intru,aenc(pubK(intru),(r2 || r5))) \in nw(s)) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(send2(s,r1,r2,r3,r4,r5,r6),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq a = r2 .
+  eq b = r3 .
+  eq n = r5 .
+  eq n2 = r6 .
+  eq (r2 = intru) = false .
+  eq (r3 = intru) = false .
+  eq d2 = aenc(pubK(r3),r6) .
+  eq (msg3(a2,r2,r3,aenc(pubK(r3),r6)) \in nw(s)) = true .
+  eq (msg3(r2,r2,r3,aenc(pubK(r3),r6)) \in nw(s)) = true .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(send2(s,r1,r2,r3,r4,r5,r6),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq a = r2 .
+  eq b = r3 .
+  eq n = r5 .
+  eq n2 = r6 .
+  eq (r2 = intru) = false .
+  eq (r3 = intru) = false .
+  eq d2 = aenc(pubK(r3),r6) .
+  eq (msg3(a2,r2,r3,aenc(pubK(r3),r6)) \in nw(s)) = true .
+  eq (msg3(r2,r2,r3,aenc(pubK(r3),r6)) \in nw(s)) = false .
+  eq (msg2(r3,r3,r2,aenc(pubK(r2),(r5 || r6 || r3))) \in nw(s)) = true .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(send2(s,r1,r2,r3,r4,r5,r6),a2,a,b,n,n2,d2) .
+close
+
+--> true, use inv23 as a lemma
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq a = r2 .
+  eq b = r3 .
+  eq n = r5 .
+  eq n2 = r6 .
+  eq (r2 = intru) = false .
+  eq (r3 = intru) = false .
+  eq d2 = aenc(pubK(r3),r6) .
+  eq (msg3(a2,r2,r3,aenc(pubK(r3),r6)) \in nw(s)) = true .
+  eq (msg3(r2,r2,r3,aenc(pubK(r3),r6)) \in nw(s)) = false .
+  eq (msg2(r3,r3,r2,aenc(pubK(r2),(r5 || r6 || r3))) \in nw(s)) = false .
+  red inv23(s,a2,r2,r3,r6) implies auth2(s,a2,a,b,n,n2,d2) implies auth2(send2(s,r1,r2,r3,r4,r5,r6),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq a = r2 .
+  eq b = r3 .
+  eq n = r5 .
+  eq n2 = r6 .
+  eq (r2 = intru) = false .
+  eq (r3 = intru) = false .
+  eq d2 = aenc(pubK(r3),r6) .
+  eq (msg3(a2,r2,r3,aenc(pubK(r3),r6)) \in nw(s)) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(send2(s,r1,r2,r3,r4,r5,r6),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq a = r2 .
+  eq b = r3 .
+  eq n = r5 .
+  eq n2 = r6 .
+  eq (r2 = intru) = false .
+  eq (r3 = intru) = false .
+  eq (d2 = aenc(pubK(r3),r6)) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(send2(s,r1,r2,r3,r4,r5,r6),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq a = r2 .
+  eq b = r3 .
+  eq n = r5 .
+  eq (n2 = r6) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(send2(s,r1,r2,r3,r4,r5,r6),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq a = r2 .
+  eq b = r3 .
+  eq (n = r5) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(send2(s,r1,r2,r3,r4,r5,r6),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq a = r2 .
+  eq (b = r3) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(send2(s,r1,r2,r3,r4,r5,r6),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq (a = r2) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(send2(s,r1,r2,r3,r4,r5,r6),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(send2(s,r1,r2,r3,r4,r5,r6),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq (r4 = aenc(pubK(r3),(r2 || r5))) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(send2(s,r1,r2,r3,r4,r5,r6),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r2),(r5 || r6 || r3)) .
+  eq (msg1(r2,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq (msg2(r1,r3,r2,aenc(pubK(r2),(r5 || r6 || r3))) \in nw(s)) = true .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(send3(s,r1,r2,r3,r4,r5,r6),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r2),(r5 || r6 || r3)) .
+  eq (msg1(r2,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq (msg2(r1,r3,r2,aenc(pubK(r2),(r5 || r6 || r3))) \in nw(s)) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(send3(s,r1,r2,r3,r4,r5,r6),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r2),(r5 || r6 || r3)) .
+  eq (msg1(r2,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(send3(s,r1,r2,r3,r4,r5,r6),a2,a,b,n,n2,d2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq (r4 = aenc(pubK(r2),(r5 || r6 || r3))) = false .
+  red auth2(s,a2,a,b,n,n2,d2) implies auth2(send3(s,r1,r2,r3,r4,r5,r6),a2,a,b,n,n2,d2) .
+close
+
+--> Time taken is 376ms

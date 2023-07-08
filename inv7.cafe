@@ -1,0 +1,803 @@
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op s : -> Sys .
+  red inv7(init,a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  red inv7(s,a,b,dl1,dl2) implies inv7(fkmsg1(s,r1,r2,r3),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = false .
+  red inv7(s,a,b,dl1,dl2) implies inv7(fkmsg1(s,r1,r2,r3),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  red inv7(s,a,b,dl1,dl2) implies inv7(fkmsg2(s,r1,r2,r3),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = false .
+  red inv7(s,a,b,dl1,dl2) implies inv7(fkmsg2(s,r1,r2,r3),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  red inv7(s,a,b,dl1,dl2) implies inv7(fkmsg3(s,r1,r2,r3),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = false .
+  red inv7(s,a,b,dl1,dl2) implies inv7(fkmsg3(s,r1,r2,r3),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Data .
+  op r2 : -> DataL .
+  op s : -> Sys .
+  eq (r1 \in knl(s)) = true .
+  eq (r2 \in knl(s)) = true .
+  eq dl1 = r2 .
+  red inv7(s,a,b,dl1,dl2) implies inv7(g2(s,r1,r2),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Data .
+  op r2 : -> DataL .
+  op s : -> Sys .
+  eq (r1 \in knl(s)) = true .
+  eq (r2 \in knl(s)) = true .
+  eq (dl1 = r2) = false .
+  eq (dl1 \in knl(s)) = true .
+  red inv7(s,a,b,dl1,dl2) implies inv7(g2(s,r1,r2),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Data .
+  op r2 : -> DataL .
+  op s : -> Sys .
+  eq (r1 \in knl(s)) = true .
+  eq (r2 \in knl(s)) = true .
+  eq (dl1 = r2) = false .
+  eq (dl1 \in knl(s)) = false .
+  red inv7(s,a,b,dl1,dl2) implies inv7(g2(s,r1,r2),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Data .
+  op r2 : -> DataL .
+  op s : -> Sys .
+  eq (r1 \in knl(s)) = true .
+  eq (r2 \in knl(s)) = false .
+  red inv7(s,a,b,dl1,dl2) implies inv7(g2(s,r1,r2),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Data .
+  op r2 : -> DataL .
+  op s : -> Sys .
+  eq (r1 \in knl(s)) = false .
+  red inv7(s,a,b,dl1,dl2) implies inv7(g2(s,r1,r2),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> DataL .
+  op s : -> Sys .
+  eq (priK(r1) \in knl(s)) = true .
+  eq (aenc(pubK(r1),r2) \in knl(s)) = true .
+  eq (dl1 \in knl(s)) = true .
+  red inv7(s,a,b,dl1,dl2) implies inv7(g21(s,r1,r2),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> DataL .
+  op s : -> Sys .
+  eq (priK(r1) \in knl(s)) = true .
+  eq (aenc(pubK(r1),r2) \in knl(s)) = true .
+  eq (dl1 \in knl(s)) = false .
+  eq (aenc(pubK(a),dl1) \in r2) = true .
+  eq (aenc(pubK(b),dl2) \in dl1) = true .
+  eq (dl1 \in (r2 || knl(s))) = true .
+  red inv7(s,a,b,dl1,dl2) implies inv7(g21(s,r1,r2),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> DataL .
+  op s : -> Sys .
+  eq (priK(r1) \in knl(s)) = true .
+  eq (aenc(pubK(r1),r2) \in knl(s)) = true .
+  eq (dl1 \in knl(s)) = false .
+  eq (aenc(pubK(a),dl1) \in r2) = true .
+  eq (aenc(pubK(b),dl2) \in dl1) = true .
+  eq (dl1 \in (r2 || knl(s))) = false .
+  eq (aenc(pubK(a),dl1) \in knl(s)) = true .
+  red inv7(s,a,b,dl1,dl2) implies inv7(g21(s,r1,r2),a,b,dl1,dl2) .
+close
+
+--> true, use lm1 as a lemma
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> DataL .
+  op s : -> Sys .
+  eq (priK(r1) \in knl(s)) = true .
+  eq (aenc(pubK(r1),r2) \in knl(s)) = true .
+  eq (dl1 \in knl(s)) = false .
+  eq (aenc(pubK(a),dl1) \in r2) = true .
+  eq (aenc(pubK(b),dl2) \in dl1) = true .
+  eq (dl1 \in (r2 || knl(s))) = false .
+  eq (aenc(pubK(a),dl1) \in knl(s)) = false .
+  eq (r2 \in knl(s)) = true .
+  red lm1(aenc(pubK(a),dl1),r2,knl(s)) implies inv7(s,a,b,dl1,dl2) implies inv7(g21(s,r1,r2),a,b,dl1,dl2) .
+close
+
+--> true, use inv7 as a lemma
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> DataL .
+  op s : -> Sys .
+  eq (priK(r1) \in knl(s)) = true .
+  eq (aenc(pubK(r1),r2) \in knl(s)) = true .
+  eq (dl1 \in knl(s)) = false .
+  eq (aenc(pubK(a),dl1) \in r2) = true .
+  eq (aenc(pubK(b),dl2) \in dl1) = true .
+  eq (dl1 \in (r2 || knl(s))) = false .
+  eq (aenc(pubK(a),dl1) \in knl(s)) = false .
+  eq (r2 \in knl(s)) = false .
+  red inv7(s,r1,a,r2,dl1) implies inv7(s,a,b,dl1,dl2) implies inv7(g21(s,r1,r2),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> DataL .
+  op s : -> Sys .
+  eq (priK(r1) \in knl(s)) = true .
+  eq (aenc(pubK(r1),r2) \in knl(s)) = true .
+  eq (dl1 \in knl(s)) = false .
+  eq (aenc(pubK(a),dl1) \in r2) = true .
+  eq (aenc(pubK(b),dl2) \in dl1) = false .
+  red inv7(s,a,b,dl1,dl2) implies inv7(g21(s,r1,r2),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> DataL .
+  op s : -> Sys .
+  eq (priK(r1) \in knl(s)) = true .
+  eq (aenc(pubK(r1),r2) \in knl(s)) = true .
+  eq (dl1 \in knl(s)) = false .
+  eq (aenc(pubK(a),dl1) \in r2) = false .
+  red inv7(s,a,b,dl1,dl2) implies inv7(g21(s,r1,r2),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> DataL .
+  op s : -> Sys .
+  eq (priK(r1) \in knl(s)) = true .
+  eq (aenc(pubK(r1),r2) \in knl(s)) = false .
+  red inv7(s,a,b,dl1,dl2) implies inv7(g21(s,r1,r2),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> DataL .
+  op s : -> Sys .
+  eq (priK(r1) \in knl(s)) = false .
+  red inv7(s,a,b,dl1,dl2) implies inv7(g21(s,r1,r2),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> PubKey .
+  op s : -> Sys .
+  eq (dl1 \in knl(s)) = true .
+  red inv7(s,a,b,dl1,dl2) implies inv7(gBasic(s,r1,r2),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> PubKey .
+  op s : -> Sys .
+  eq (dl1 \in knl(s)) = false .
+  red inv7(s,a,b,dl1,dl2) implies inv7(gBasic(s,r1,r2),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Nonce .
+  op s : -> Sys .
+  eq (r1 \in unonce(s)) = true .
+  red inv7(s,a,b,dl1,dl2) implies inv7(gNonce(s,r1),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Nonce .
+  op s : -> Sys .
+  eq (r1 \in unonce(s)) = false .
+  eq (dl1 \in knl(s)) = true .
+  red inv7(s,a,b,dl1,dl2) implies inv7(gNonce(s,r1),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Nonce .
+  op s : -> Sys .
+  eq (r1 \in unonce(s)) = false .
+  eq (dl1 \in knl(s)) = false .
+  red inv7(s,a,b,dl1,dl2) implies inv7(gNonce(s,r1),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Nonce .
+  op s : -> Sys .
+  eq (r3 \in unonce(s)) = true .
+  red inv7(s,a,b,dl1,dl2) implies inv7(send1(s,r1,r2,r3),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Nonce .
+  op s : -> Sys .
+  eq (r3 \in unonce(s)) = false .
+  eq a = r2 .
+  eq dl1 = (r1 || r3) .
+  red inv7(s,a,b,dl1,dl2) implies inv7(send1(s,r1,r2,r3),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Nonce .
+  op s : -> Sys .
+  eq (r3 \in unonce(s)) = false .
+  eq a = r2 .
+  eq (dl1 = (r1 || r3)) = false .
+  eq (dl1 \in knl(s)) = true .
+  red inv7(s,a,b,dl1,dl2) implies inv7(send1(s,r1,r2,r3),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Nonce .
+  op s : -> Sys .
+  eq (r3 \in unonce(s)) = false .
+  eq a = r2 .
+  eq (dl1 = (r1 || r3)) = false .
+  eq (dl1 \in knl(s)) = false .
+  red inv7(s,a,b,dl1,dl2) implies inv7(send1(s,r1,r2,r3),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Nonce .
+  op s : -> Sys .
+  eq (r3 \in unonce(s)) = false .
+  eq (a = r2) = false .
+  eq (dl1 \in knl(s)) = true .
+  red inv7(s,a,b,dl1,dl2) implies inv7(send1(s,r1,r2,r3),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Nonce .
+  op s : -> Sys .
+  eq (r3 \in unonce(s)) = false .
+  eq (a = r2) = false .
+  eq (dl1 \in knl(s)) = false .
+  red inv7(s,a,b,dl1,dl2) implies inv7(send1(s,r1,r2,r3),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = true .
+  red inv7(s,a,b,dl1,dl2) implies inv7(send2(s,r1,r2,r3,r4,r5,r6),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq a = r2 .
+  eq dl1 = (r5 || r6 || r3) .
+  red inv7(s,a,b,dl1,dl2) implies inv7(send2(s,r1,r2,r3,r4,r5,r6),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq a = r2 .
+  eq (dl1 = (r5 || r6 || r3)) = false .
+  eq (dl1 \in knl(s)) = true .
+  red inv7(s,a,b,dl1,dl2) implies inv7(send2(s,r1,r2,r3,r4,r5,r6),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq a = r2 .
+  eq (dl1 = (r5 || r6 || r3)) = false .
+  eq (dl1 \in knl(s)) = false .
+  red inv7(s,a,b,dl1,dl2) implies inv7(send2(s,r1,r2,r3,r4,r5,r6),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq (a = r2) = false .
+  eq (dl1 \in knl(s)) = true .
+  red inv7(s,a,b,dl1,dl2) implies inv7(send2(s,r1,r2,r3,r4,r5,r6),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq (a = r2) = false .
+  eq (dl1 \in knl(s)) = false .
+  red inv7(s,a,b,dl1,dl2) implies inv7(send2(s,r1,r2,r3,r4,r5,r6),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = false .
+  red inv7(s,a,b,dl1,dl2) implies inv7(send2(s,r1,r2,r3,r4,r5,r6),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq (r4 = aenc(pubK(r3),(r2 || r5))) = false .
+  red inv7(s,a,b,dl1,dl2) implies inv7(send2(s,r1,r2,r3,r4,r5,r6),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r2),(r5 || r6 || r3)) .
+  eq (msg1(r2,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq (msg2(r1,r3,r2,aenc(pubK(r2),(r5 || r6 || r3))) \in nw(s)) = true .
+  eq a = r3 .
+  eq dl1 = r6 .
+  red inv7(s,a,b,dl1,dl2) implies inv7(send3(s,r1,r2,r3,r4,r5,r6),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r2),(r5 || r6 || r3)) .
+  eq (msg1(r2,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq (msg2(r1,r3,r2,aenc(pubK(r2),(r5 || r6 || r3))) \in nw(s)) = true .
+  eq a = r3 .
+  eq (dl1 = r6) = false .
+  eq (dl1 \in knl(s)) = true .
+  red inv7(s,a,b,dl1,dl2) implies inv7(send3(s,r1,r2,r3,r4,r5,r6),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r2),(r5 || r6 || r3)) .
+  eq (msg1(r2,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq (msg2(r1,r3,r2,aenc(pubK(r2),(r5 || r6 || r3))) \in nw(s)) = true .
+  eq a = r3 .
+  eq (dl1 = r6) = false .
+  eq (dl1 \in knl(s)) = false .
+  red inv7(s,a,b,dl1,dl2) implies inv7(send3(s,r1,r2,r3,r4,r5,r6),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r2),(r5 || r6 || r3)) .
+  eq (msg1(r2,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq (msg2(r1,r3,r2,aenc(pubK(r2),(r5 || r6 || r3))) \in nw(s)) = true .
+  eq (a = r3) = false .
+  eq (dl1 \in knl(s)) = true .
+  red inv7(s,a,b,dl1,dl2) implies inv7(send3(s,r1,r2,r3,r4,r5,r6),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r2),(r5 || r6 || r3)) .
+  eq (msg1(r2,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq (msg2(r1,r3,r2,aenc(pubK(r2),(r5 || r6 || r3))) \in nw(s)) = true .
+  eq (a = r3) = false .
+  eq (dl1 \in knl(s)) = false .
+  red inv7(s,a,b,dl1,dl2) implies inv7(send3(s,r1,r2,r3,r4,r5,r6),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r2),(r5 || r6 || r3)) .
+  eq (msg1(r2,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq (msg2(r1,r3,r2,aenc(pubK(r2),(r5 || r6 || r3))) \in nw(s)) = false .
+  red inv7(s,a,b,dl1,dl2) implies inv7(send3(s,r1,r2,r3,r4,r5,r6),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r2),(r5 || r6 || r3)) .
+  eq (msg1(r2,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = false .
+  red inv7(s,a,b,dl1,dl2) implies inv7(send3(s,r1,r2,r3,r4,r5,r6),a,b,dl1,dl2) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op dl1 : -> DataL .
+  op dl2 : -> DataL .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq (r4 = aenc(pubK(r2),(r5 || r6 || r3))) = false .
+  red inv7(s,a,b,dl1,dl2) implies inv7(send3(s,r1,r2,r3,r4,r5,r6),a,b,dl1,dl2) .
+close
+
+--> Time taken is 8146ms

@@ -1,0 +1,1306 @@
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op s : -> Sys .
+  red inv21(init,a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(fkmsg1(s,r1,r2,r3),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(fkmsg1(s,r1,r2,r3),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  eq a2 = r2 .
+  eq b = r1 .
+  eq b2 = intru .
+  eq a = intru .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(fkmsg2(s,r1,r2,r3),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  eq a2 = r2 .
+  eq b = r1 .
+  eq b2 = intru .
+  eq (a = intru) = false .
+  eq a = r2 .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(fkmsg2(s,r1,r2,r3),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  eq a2 = r2 .
+  eq b = r1 .
+  eq b2 = intru .
+  eq (a = intru) = false .
+  eq (a = r2) = false .
+  eq r1 = intru .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(fkmsg2(s,r1,r2,r3),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  eq a2 = r2 .
+  eq b = r1 .
+  eq b2 = intru .
+  eq (a = intru) = false .
+  eq (a = r2) = false .
+  eq (r1 = intru) = false .
+  eq r3 = aenc(pubK(r2),(n3 || n2 || r1)) .
+  eq (aenc(pubK(r2),(n3 || n2 || r1)) \in knl(s)) = true .
+  eq (msg2(r1,r1,a,aenc(pubK(a),(n || n2 || r1))) \in nw(s)) = true .
+  eq (msg2(intru,r1,r2,aenc(pubK(r2),(n3 || n2 || r1))) \in nw(s)) = true .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(fkmsg2(s,r1,r2,r3),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true, use inv22 as a lemma
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  eq a2 = r2 .
+  eq b = r1 .
+  eq b2 = intru .
+  eq (a = intru) = false .
+  eq (a = r2) = false .
+  eq (r1 = intru) = false .
+  eq r3 = aenc(pubK(r2),(n3 || n2 || r1)) .
+  eq (aenc(pubK(r2),(n3 || n2 || r1)) \in knl(s)) = true .
+  eq (msg2(r1,r1,a,aenc(pubK(a),(n || n2 || r1))) \in nw(s)) = true .
+  eq (msg2(intru,r1,r2,aenc(pubK(r2),(n3 || n2 || r1))) \in nw(s)) = false .
+  red inv22(s,a,r1,r2,n,n2,n3) implies inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(fkmsg2(s,r1,r2,r3),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  eq a2 = r2 .
+  eq b = r1 .
+  eq b2 = intru .
+  eq (a = intru) = false .
+  eq (a = r2) = false .
+  eq (r1 = intru) = false .
+  eq r3 = aenc(pubK(r2),(n3 || n2 || r1)) .
+  eq (aenc(pubK(r2),(n3 || n2 || r1)) \in knl(s)) = true .
+  eq (msg2(r1,r1,a,aenc(pubK(a),(n || n2 || r1))) \in nw(s)) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(fkmsg2(s,r1,r2,r3),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  eq a2 = r2 .
+  eq b = r1 .
+  eq b2 = intru .
+  eq (a = intru) = false .
+  eq (a = r2) = false .
+  eq (r1 = intru) = false .
+  eq r3 = aenc(pubK(r2),(n3 || n2 || r1)) .
+  eq (aenc(pubK(r2),(n3 || n2 || r1)) \in knl(s)) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(fkmsg2(s,r1,r2,r3),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  eq a2 = r2 .
+  eq b = r1 .
+  eq b2 = intru .
+  eq (a = intru) = false .
+  eq (a = r2) = false .
+  eq (r1 = intru) = false .
+  eq (r3 = aenc(pubK(r2),(n3 || n2 || r1))) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(fkmsg2(s,r1,r2,r3),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  eq a2 = r2 .
+  eq b = r1 .
+  eq (b2 = intru) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(fkmsg2(s,r1,r2,r3),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  eq a2 = r2 .
+  eq (b = r1) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(fkmsg2(s,r1,r2,r3),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  eq (a2 = r2) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(fkmsg2(s,r1,r2,r3),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(fkmsg2(s,r1,r2,r3),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = true .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(fkmsg3(s,r1,r2,r3),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Data .
+  op s : -> Sys .
+  eq (r3 \in knl(s)) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(fkmsg3(s,r1,r2,r3),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Data .
+  op r2 : -> DataL .
+  op s : -> Sys .
+  eq (r1 \in knl(s)) = true .
+  eq (r2 \in knl(s)) = true .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(g2(s,r1,r2),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Data .
+  op r2 : -> DataL .
+  op s : -> Sys .
+  eq (r1 \in knl(s)) = true .
+  eq (r2 \in knl(s)) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(g2(s,r1,r2),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Data .
+  op r2 : -> DataL .
+  op s : -> Sys .
+  eq (r1 \in knl(s)) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(g2(s,r1,r2),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> DataL .
+  op s : -> Sys .
+  eq (priK(r1) \in knl(s)) = true .
+  eq (aenc(pubK(r1),r2) \in knl(s)) = true .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(g21(s,r1,r2),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> DataL .
+  op s : -> Sys .
+  eq (priK(r1) \in knl(s)) = true .
+  eq (aenc(pubK(r1),r2) \in knl(s)) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(g21(s,r1,r2),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> DataL .
+  op s : -> Sys .
+  eq (priK(r1) \in knl(s)) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(g21(s,r1,r2),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> PubKey .
+  op s : -> Sys .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(gBasic(s,r1,r2),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Nonce .
+  op s : -> Sys .
+  eq (r1 \in unonce(s)) = true .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(gNonce(s,r1),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Nonce .
+  op s : -> Sys .
+  eq (r1 \in unonce(s)) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(gNonce(s,r1),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Nonce .
+  op s : -> Sys .
+  eq (r3 \in unonce(s)) = true .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send1(s,r1,r2,r3),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Nonce .
+  op s : -> Sys .
+  eq (r3 \in unonce(s)) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send1(s,r1,r2,r3),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = true .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send2(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq a = r2 .
+  eq b = r3 .
+  eq n = r5 .
+  eq n2 = r6 .
+  eq a2 = r2 .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send2(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq a = r2 .
+  eq b = r3 .
+  eq n = r5 .
+  eq n2 = r6 .
+  eq (a2 = r2) = false .
+  eq r2 = intru .
+  eq (msg1(r1,intru,r3,aenc(pubK(r3),(intru || r5))) \in nw(s)) = true .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send2(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq a = r2 .
+  eq b = r3 .
+  eq n = r5 .
+  eq n2 = r6 .
+  eq (a2 = r2) = false .
+  eq r2 = intru .
+  eq (msg1(r1,intru,r3,aenc(pubK(r3),(intru || r5))) \in nw(s)) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send2(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq a = r2 .
+  eq b = r3 .
+  eq n = r5 .
+  eq n2 = r6 .
+  eq (a2 = r2) = false .
+  eq (r2 = intru) = false .
+  eq r3 = intru .
+  eq (msg1(r1,r2,intru,aenc(pubK(intru),(r2 || r5))) \in nw(s)) = true .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send2(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq a = r2 .
+  eq b = r3 .
+  eq n = r5 .
+  eq n2 = r6 .
+  eq (a2 = r2) = false .
+  eq (r2 = intru) = false .
+  eq r3 = intru .
+  eq (msg1(r1,r2,intru,aenc(pubK(intru),(r2 || r5))) \in nw(s)) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send2(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq a = r2 .
+  eq b = r3 .
+  eq n = r5 .
+  eq n2 = r6 .
+  eq (a2 = r2) = false .
+  eq (r2 = intru) = false .
+  eq (r3 = intru) = false .
+  eq (msg2(b2,r3,a2,aenc(pubK(a2),(n3 || r6 || r3))) \in nw(s)) = true .
+  eq (msg2(r3,r3,r2,aenc(pubK(r2),(r5 || r6 || r3))) \in nw(s)) = true .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send2(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true, use inv6 as a lemma
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq a = r2 .
+  eq b = r3 .
+  eq n = r5 .
+  eq n2 = r6 .
+  eq (a2 = r2) = false .
+  eq (r2 = intru) = false .
+  eq (r3 = intru) = false .
+  eq (msg2(b2,r3,a2,aenc(pubK(a2),(n3 || r6 || r3))) \in nw(s)) = true .
+  eq (msg2(r3,r3,r2,aenc(pubK(r2),(r5 || r6 || r3))) \in nw(s)) = false .
+  red inv6(s,b2,r3,a2,n3,r6) implies inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send2(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq a = r2 .
+  eq b = r3 .
+  eq n = r5 .
+  eq n2 = r6 .
+  eq (a2 = r2) = false .
+  eq (r2 = intru) = false .
+  eq (r3 = intru) = false .
+  eq (msg2(b2,r3,a2,aenc(pubK(a2),(n3 || r6 || r3))) \in nw(s)) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send2(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq a = r2 .
+  eq b = r3 .
+  eq n = r5 .
+  eq (n2 = r6) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send2(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq a = r2 .
+  eq b = r3 .
+  eq (n = r5) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send2(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq a = r2 .
+  eq (b = r3) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send2(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq (a = r2) = false .
+  eq a2 = r2 .
+  eq b = r3 .
+  eq b2 = r3 .
+  eq n2 = r6 .
+  eq n3 = r5 .
+  eq a = intru .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send2(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq (a = r2) = false .
+  eq a2 = r2 .
+  eq b = r3 .
+  eq b2 = r3 .
+  eq n2 = r6 .
+  eq n3 = r5 .
+  eq (a = intru) = false .
+  eq r3 = intru .
+  eq (msg1(r1,r2,intru,aenc(pubK(intru),(r2 || r5))) \in nw(s)) = true .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send2(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq (a = r2) = false .
+  eq a2 = r2 .
+  eq b = r3 .
+  eq b2 = r3 .
+  eq n2 = r6 .
+  eq n3 = r5 .
+  eq (a = intru) = false .
+  eq r3 = intru .
+  eq (msg1(r1,r2,intru,aenc(pubK(intru),(r2 || r5))) \in nw(s)) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send2(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq (a = r2) = false .
+  eq a2 = r2 .
+  eq b = r3 .
+  eq b2 = r3 .
+  eq n2 = r6 .
+  eq n3 = r5 .
+  eq (a = intru) = false .
+  eq (r3 = intru) = false .
+  eq (msg2(r3,r3,a,aenc(pubK(a),(n || r6 || r3))) \in nw(s)) = true .
+  eq (msg2(r3,r3,r2,aenc(pubK(r2),(r5 || r6 || r3))) \in nw(s)) = true .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send2(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true, use inv6 as a lemma
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq (a = r2) = false .
+  eq a2 = r2 .
+  eq b = r3 .
+  eq b2 = r3 .
+  eq n2 = r6 .
+  eq n3 = r5 .
+  eq (a = intru) = false .
+  eq (r3 = intru) = false .
+  eq (msg2(r3,r3,a,aenc(pubK(a),(n || r6 || r3))) \in nw(s)) = true .
+  eq (msg2(r3,r3,r2,aenc(pubK(r2),(r5 || r6 || r3))) \in nw(s)) = false .
+  red inv6(s,r3,r3,a,n,r6) implies inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send2(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq (a = r2) = false .
+  eq a2 = r2 .
+  eq b = r3 .
+  eq b2 = r3 .
+  eq n2 = r6 .
+  eq n3 = r5 .
+  eq (a = intru) = false .
+  eq (r3 = intru) = false .
+  eq (msg2(r3,r3,a,aenc(pubK(a),(n || r6 || r3))) \in nw(s)) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send2(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq (a = r2) = false .
+  eq a2 = r2 .
+  eq b = r3 .
+  eq b2 = r3 .
+  eq n2 = r6 .
+  eq (n3 = r5) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send2(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq (a = r2) = false .
+  eq a2 = r2 .
+  eq b = r3 .
+  eq b2 = r3 .
+  eq (n2 = r6) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send2(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq (a = r2) = false .
+  eq a2 = r2 .
+  eq b = r3 .
+  eq (b2 = r3) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send2(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq (a = r2) = false .
+  eq a2 = r2 .
+  eq (b = r3) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send2(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq (a = r2) = false .
+  eq (a2 = r2) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send2(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r3),(r2 || r5)) .
+  eq (r6 \in unonce(s)) = false .
+  eq (msg1(r1,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send2(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq (r4 = aenc(pubK(r3),(r2 || r5))) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send2(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r2),(r5 || r6 || r3)) .
+  eq (msg1(r2,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq (msg2(r1,r3,r2,aenc(pubK(r2),(r5 || r6 || r3))) \in nw(s)) = true .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send3(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r2),(r5 || r6 || r3)) .
+  eq (msg1(r2,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = true .
+  eq (msg2(r1,r3,r2,aenc(pubK(r2),(r5 || r6 || r3))) \in nw(s)) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send3(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq r4 = aenc(pubK(r2),(r5 || r6 || r3)) .
+  eq (msg1(r2,r2,r3,aenc(pubK(r3),(r2 || r5))) \in nw(s)) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send3(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op n3 : -> Nonce .
+  op r1 : -> Prin .
+  op r2 : -> Prin .
+  op r3 : -> Prin .
+  op r4 : -> Data .
+  op r5 : -> Nonce .
+  op r6 : -> Nonce .
+  op s : -> Sys .
+  eq (r4 = aenc(pubK(r2),(r5 || r6 || r3))) = false .
+  red inv21(s,a,b,a2,b2,n,n2,n3) implies inv21(send3(s,r1,r2,r3,r4,r5,r6),a,b,a2,b2,n,n2,n3) .
+close
+
+--> Time taken is 624ms

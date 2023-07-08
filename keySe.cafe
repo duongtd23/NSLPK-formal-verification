@@ -1,0 +1,11 @@
+--> true
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op d : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op s : -> Sys .
+  red inv1(s,a,b,n) implies keySe(s,b2,a,b,n,n2,d) .
+close

@@ -1,0 +1,13 @@
+-- load examples/nslpk2/nslpk.cafe . load examples/nslpk2/invariants.cafe .
+ipsgopen INV .
+  inv inv20(S:Sys,A:Prin,B:Prin,N:Nonce,N2:Nonce) .
+  inv inv23(S:Sys,A2:Prin,A:Prin,B:Prin,N:Nonce) .
+  generate auth2(S:Sys,A2:Prin,A:Prin,B:Prin,
+    N:Nonce,N2:Nonce,D2:Data) 
+    induction on S:Sys .
+close
+set-output examples/nslpk2/auth2.cafe .
+:save-proof .
+
+eof
+load examples/nslpk2/input-auth2.cafe .

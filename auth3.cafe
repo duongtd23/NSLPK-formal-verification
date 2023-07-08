@@ -1,0 +1,12 @@
+--> true
+open INV .
+  op a : -> Prin .
+  op a2 : -> Prin .
+  op b : -> Prin .
+  op d2 : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op s : -> Sys .
+  red (auth3(s,a2,a,b,n,n2,d2) and inv24(s,a,b,n,n2,d2))
+    implies auth3(s,a2,a,b,n,n2,d2) .
+close

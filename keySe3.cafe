@@ -1,0 +1,37 @@
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op d : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op s : -> Sys .
+  eq d = aenc(pubK(a), n || n2 || b) .
+  eq msg2(b,b,a,aenc(pubK(a), n || n2 || b)) \in nw(s) = true .
+  red inv0(s,a,b,n,n2) implies keySe3(s,b2,a,b,n,n2,d) .
+close
+
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op d : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op s : -> Sys .
+  eq d = aenc(pubK(a), n || n2 || b) .
+  eq msg2(b,b,a,aenc(pubK(a), n || n2 || b)) \in nw(s) = false .
+  red auth(s,b2,a,b,n,n2,d) implies keySe3(s,b2,a,b,n,n2,d) .
+close
+
+open INV .
+  op a : -> Prin .
+  op b : -> Prin .
+  op b2 : -> Prin .
+  op d : -> Data .
+  op n : -> Nonce .
+  op n2 : -> Nonce .
+  op s : -> Sys .
+  eq (d = aenc(pubK(a), n || n2 || b)) = false .
+  red keySe3(s,b2,a,b,n,n2,d) .
+close

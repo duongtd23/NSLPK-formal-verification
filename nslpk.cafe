@@ -1,0 +1,289 @@
+--
+-- Needham-Schroeder-Lowe Public-Key Authentication Protocol
+-- (NSLPK Protocol)
+--
+-- Msg1 p --> q : E_q(n_p, p)
+-- Msg2 q --> p : E_p(n_p, n_q, q)
+-- Msg3 p --> q : E_q(n_q)
+--
+mod* PRINCIPAL {
+  [Prin PubKey PriKey]
+  op intru : -> Prin {constr}
+  op priK : Prin -> PriKey {constr}
+  op pubK : Prin -> PubKey {constr}
+  vars A B : Prin 
+  eq (priK(A) = priK(B)) = (A = B) .
+  eq (pubK(A) = pubK(B)) = (A = B) .
+}
+mod! NONCE {
+  [Nonce]
+}
+mod! DATA {
+  pr(PRINCIPAL + NONCE)
+  [Data < DataL]
+  [Prin PubKey PriKey Nonce < Data]
+  op _||_ : DataL DataL -> DataL {assoc r-assoc constr}
+
+  op _\in_ : DataL DataL -> Bool
+
+  vars D1 D2 : Data
+  vars DL DL2 DL3 : DataL
+  var P : Prin
+  var K : PriKey
+  var PK : PubKey
+  var N : Nonce
+
+  eq (D1 = (D2 || DL2)) = false .
+  eq ((D1 || DL) = (D2 || DL2)) 
+      = (D1 = D2 and DL = DL2) .
+
+  eq (D1 || DL) \in D2 = false .
+  eq (D1 || DL) \in DL2 = (D1 \in DL2 and DL \in DL2) .
+  eq D1 \in D2 = (D1 = D2) .
+  eq D1 \in (D2 || DL2) = (D1 = D2 or D1 \in DL2) .
+
+  ceq (P = D1)   = false if (D1 :is PriKey) or 
+                            (D1 :is PubKey) or 
+                            (D1 :is Nonce) .
+  ceq (K = D1)   = false if (D1 :is Prin) or 
+                            (D1 :is PubKey) or 
+                            (D1 :is Nonce) .
+  ceq (PK = D1)  = false if (D1 :is Prin) or 
+                            (D1 :is PriKey) or 
+                            (D1 :is Nonce) .
+  ceq (N = D1)  = false if (D1 :is Prin) or 
+                            (D1 :is PriKey) or 
+                            (D1 :is PubKey) .
+
+-- lemmas
+  eq D1 \in (DL2 || DL3) = D1 \in DL2 or D1 \in DL3 .
+  ceq DL \in (DL2 || DL3) = true if DL \in DL3 .
+}
+mod! ENCRYPTION {
+  pr(DATA)
+  
+--          Key   Plaintext     Ciphertext
+  op aenc : Data  DataL      -> Data {constr}
+--          Key   Ciphertext    Plaintext
+  op adec : Data  Data       -> DataL
+
+  vars A B : Prin 
+  vars KE KE2 D D2 : Data
+  vars DL DL2 : DataL
+  vars PK : PubKey
+  vars K : PriKey
+
+  eq adec(pubK(A), aenc(priK(A),DL)) = DL .
+  eq adec(priK(A), aenc(pubK(A),DL)) = DL .
+  eq (adec(pubK(A), D2) = DL) = (D2 = aenc(priK(A),DL)) .
+  eq (adec(priK(A), D2) = DL) = (D2 = aenc(pubK(A),DL)) .
+  ceq (adec(KE, D) = DL2) = false 
+    if (KE :is Prin) or (KE :is Nonce) .
+
+  eq (aenc(KE,DL) = aenc(KE2,DL2)) = (KE = KE2 and DL = DL2) .
+  ceq (aenc(KE,DL) = D) = false if (D :is Prin) or 
+                                   (D :is PriKey) or 
+                                   (D :is PubKey) or 
+                                   (D :is Nonce) .
+}
+mod! MESSAGE {
+  pr(ENCRYPTION)
+  [Msg]
+  op msg1 : Prin Prin Prin DataL -> Msg {constr}
+  op msg2 : Prin Prin Prin DataL -> Msg {constr}
+  op msg3 : Prin Prin Prin DataL -> Msg {constr}
+ 
+  vars A B A2 B2 A' A2' : Prin 
+  vars D D2 : DataL 
+  eq (msg1(A',A,B,D) = msg1(A2',A2,B2,D2)) =
+    (A' = A2' and A = A2 and B = B2 and D = D2) .
+  eq (msg2(A',A,B,D) = msg2(A2',A2,B2,D2)) =
+    (A' = A2' and A = A2 and B = B2 and D = D2) .
+  eq (msg3(A',A,B,D) = msg3(A2',A2,B2,D2)) =
+    (A' = A2' and A = A2 and B = B2 and D = D2) .
+  eq (msg1(A',A,B,D) = msg2(A2',A2,B2,D2)) = false .
+  eq (msg1(A',A,B,D) = msg3(A2',A2,B2,D2)) = false .
+  eq (msg2(A',A,B,D) = msg3(A2',A2,B2,D2)) = false .
+}
+mod! SET (D :: TRIV) {
+  [Elt.D < Set]
+  op empty : -> Set {constr}
+  op __ : Set Set -> Set {assoc constr comm idem id: empty}
+  op _\in_ : Elt.D Set -> Bool
+  var S : Set
+  vars E1 E2 : Elt.D
+  eq E1 \in empty = false .
+  eq E1 \in E2 = (E1 = E2) .
+  eq E1 \in (E2 S) = (E1 = E2) or (E1 \in S) .
+}
+mod! BAG (D :: TRIV) {
+  [Elt.D < Bag]
+  op void : -> Bag {constr}
+  op _,_ : Bag Bag -> Bag {assoc constr comm id: void}
+  op _\in_ : Elt.D Bag -> Bool
+  var B : Bag
+  vars E1 E2 : Elt.D
+  eq E1 \in void = false .
+  eq E1 \in E2 = (E1 = E2) .
+  eq E1 \in (E2,B) = (E1 = E2) or (E1 \in B) .
+}
+view TRIV2MESSAGE from TRIV to MESSAGE {
+  sort Elt -> Msg
+}
+mod! NETWORK {
+  pr(BAG(D <= TRIV2MESSAGE)*{sort Bag -> Network})
+}
+view TRIV2DATA from TRIV to DATA {
+  sort Elt -> Data
+}
+mod NSLPK {
+  pr(NETWORK)
+  pr(SET(D <= TRIV2DATA)*{sort Set -> NonceSet})
+  [Sys]
+-- initial states
+  op init : -> Sys {constr}
+  op send1 : Sys Prin Prin Nonce -> Sys {constr}
+  op send2 : Sys Prin Prin Prin Data Nonce Nonce -> Sys {constr}
+  op send3 : Sys Prin Prin Prin Data Nonce Nonce -> Sys {constr}
+
+  op nw : Sys -> Network
+  op unonce : Sys -> NonceSet
+  op knl : Sys -> DataL
+
+  var S : Sys
+  vars A B A2 B2 A3 B3 : Prin 
+  vars D D1 D2 : Data
+  vars N N2 : Nonce
+  vars PK : PubKey
+  vars SK : PriKey
+  vars DL DL2 : DataL
+
+  eq nw(init) = void .
+  eq unonce(init) = empty .
+  eq knl(init) = (priK(intru) || pubK(intru)) .
+
+  op c-send1 : Sys Nonce -> Bool
+  eq c-send1(S,N) = not(N \in unonce(S)) .
+  ceq nw(send1(S,A,B,N)) = 
+      (msg1(A,A,B, aenc(pubK(B), A || N)) , nw(S)) 
+    if c-send1(S,N) .
+  ceq unonce(send1(S,A,B,N)) = (N unonce(S)) 
+    if c-send1(S,N) .
+  ceq knl(send1(S,A,B,N)) = 
+      (aenc(pubK(B), A || N) || knl(S)) 
+    if c-send1(S,N) .
+  ceq send1(S,A,B,N) = S 
+    if not c-send1(S,N) .
+
+  op c-send2 : Sys Prin Prin Prin Data Nonce Nonce -> Bool
+  eq c-send2(S,A2,A,B,D,N,N2) = 
+   (msg1(A2,A,B, D) \in nw(S) and 
+    adec(priK(B), D) = A || N and 
+    not(N2 \in unonce(S))) .
+  ceq nw(send2(S,A2,A,B,D,N,N2)) = 
+      (msg2(B,B,A, aenc(pubK(A), N || N2 || B)) , nw(S)) 
+    if c-send2(S,A2,A,B,D,N,N2) .
+  ceq unonce(send2(S,A2,A,B,D,N,N2)) = (N2 unonce(S))
+    if c-send2(S,A2,A,B,D,N,N2) .
+  ceq knl(send2(S,A2,A,B,D,N,N2)) = 
+      (aenc(pubK(A), N || N2 || B) || knl(S)) 
+    if c-send2(S,A2,A,B,D,N,N2) .
+  ceq send2(S,A2,A,B,D,N,N2) = S
+    if not c-send2(S,A2,A,B,D,N,N2) .
+
+  op c-send3 : Sys Prin Prin Prin Data Nonce Nonce -> Bool
+  eq c-send3(S,B2,A,B,D,N,N2) = 
+   (msg1(A,A,B,  aenc(pubK(B), A || N)) \in nw(S) and 
+    msg2(B2,B,A, D) \in nw(S) and 
+    adec(priK(A), D) = N || N2 || B) .
+  ceq nw(send3(S,B2,A,B,D,N,N2)) = 
+      (msg3(A,A,B, aenc(pubK(B), N2)) , nw(S)) 
+    if c-send3(S,B2,A,B,D,N,N2) .
+  eq unonce(send3(S,B2,A,B,D,N,N2)) = unonce(S) .
+  ceq knl(send3(S,B2,A,B,D,N,N2)) = 
+      (aenc(pubK(B), N2) || knl(S))
+    if c-send3(S,B2,A,B,D,N,N2) .
+  ceq send3(S,B2,A,B,D,N,N2) = S
+    if not c-send3(S,B2,A,B,D,N,N2) .
+
+-- intruder capabilities
+-- selecting a nonce by themself
+  op gNonce : Sys Nonce -> Sys {constr}
+  op c-gNonce : Sys Nonce -> Bool
+  eq c-gNonce(S,N) = not(N \in unonce(S)) .
+  eq nw(gNonce(S,N)) = nw(S) .
+  ceq unonce(gNonce(S,N)) = (N unonce(S))
+    if c-gNonce(S,N) .
+  ceq knl(gNonce(S,N)) = (N || knl(S))
+    if c-gNonce(S,N) .
+  ceq gNonce(S,N) = S 
+    if not c-gNonce(S,N) .
+
+-- know all possible values of basic data types
+  op gBasic : Sys Prin PubKey -> Sys {constr}
+  eq nw(gBasic(S,A,PK)) = nw(S) .
+  eq unonce(gBasic(S,A,PK)) = unonce(S) .
+  eq knl(gBasic(S,A,PK)) = (A || PK || knl(S)) .
+
+-- encryption capabilities
+  op g2 : Sys Data DataL -> Sys {constr}
+  op c-g2 : Sys Data DataL -> Bool
+  eq c-g2(S,D1,DL2) = (D1 \in knl(S) and DL2 \in knl(S)) .
+  eq nw(g2(S,D1,DL2)) = nw(S) .
+  eq unonce(g2(S,D1,DL2)) = unonce(S) .
+  ceq knl(g2(S,D1,DL2)) = 
+      (aenc(D1,DL2) || knl(S)) 
+    if c-g2(S,D1,DL2) .
+  ceq g2(S,D1,DL2) = S if not c-g2(S,D1,DL2) .
+
+-- decryption capabilities
+  op g21 : Sys Prin DataL -> Sys {constr}
+  op c-g21 : Sys Prin DataL -> Bool
+  eq c-g21(S,A,DL) = 
+    (priK(A) \in knl(S) and aenc(pubK(A),DL) \in knl(S)) .
+    -- not(A = intru) and 
+  eq nw(g21(S,A,DL)) = nw(S) .
+  eq unonce(g21(S,A,DL)) = unonce(S) .
+  ceq knl(g21(S,A,DL)) = (DL || knl(S))
+    if c-g21(S,A,DL) .
+  ceq g21(S,A,DL) = S if not c-g21(S,A,DL) .
+
+-- faking msg1 messages
+  op fkmsg1 : Sys Prin Prin Data -> Sys {constr}
+  op c-fkmsg1 : Sys Prin Prin Data -> Bool
+  eq c-fkmsg1(S,A,B,D1) = 
+    (D1 \in knl(S)) .
+  ceq nw(fkmsg1(S,A,B,D1)) = 
+      (msg1(intru,A,B, D1) , nw(S))
+    if c-fkmsg1(S,A,B,D1) .
+  eq unonce(fkmsg1(S,A,B,D1)) = unonce(S) .
+  eq knl(fkmsg1(S,A,B,D1)) = knl(S) .
+  ceq fkmsg1(S,A,B,D1) = S 
+    if not c-fkmsg1(S,A,B,D1) .
+
+-- faking msg2 messages
+  op fkmsg2 : Sys Prin Prin Data -> Sys {constr}
+  op c-fkmsg2 : Sys Prin Prin Data -> Bool
+  eq c-fkmsg2(S,A,B,D1) = 
+    (D1 \in knl(S)) .
+  ceq nw(fkmsg2(S,A,B,D1)) = 
+      (msg2(intru,A,B, D1) , nw(S))
+    if c-fkmsg2(S,A,B,D1) .
+  eq unonce(fkmsg2(S,A,B,D1)) = unonce(S) .
+  eq knl(fkmsg2(S,A,B,D1)) = knl(S) .
+  ceq fkmsg2(S,A,B,D1) = S 
+    if not c-fkmsg2(S,A,B,D1) .
+
+-- faking msg3 messages
+  op fkmsg3 : Sys Prin Prin Data -> Sys {constr}
+  op c-fkmsg3 : Sys Prin Prin Data -> Bool
+  eq c-fkmsg3(S,A,B,D1) = 
+    (D1 \in knl(S)) .
+  ceq nw(fkmsg3(S,A,B,D1)) = 
+      (msg3(intru,A,B, D1) , nw(S))
+    if c-fkmsg3(S,A,B,D1) .
+  eq unonce(fkmsg3(S,A,B,D1)) = unonce(S) .
+  eq knl(fkmsg3(S,A,B,D1)) = knl(S) .
+  ceq fkmsg3(S,A,B,D1) = S 
+    if not c-fkmsg3(S,A,B,D1) .
+}
