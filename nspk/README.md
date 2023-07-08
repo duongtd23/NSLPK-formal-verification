@@ -20,3 +20,5 @@ We define the `keySe` predicate in module `PRED` at the end of the file:
 ```
 
 The predicate specify the nonce secrecy property from the responder point of view, which is widely known as a wrong property. A counterexample is given in the `ctx.cafe` file.
+
+This is mainly to show that we correctly specify NSPK as well as NSLPK.

@@ -4,7 +4,7 @@ You can find in this repository:
 - `nslpk.cafe`: The formal specification of the NSLPK protocol. The detailed explanation is given below.
 - `invariants.cafe`: The invariant properties and lemmas. The descriptions of invariant properties are given below.
 - `inputs`: Input scripts for IPSG to produce the proof scores.
-- `nspk`: The formal specification of the NSPK protocol and a counterexample of its secrecy property. See README in that folder.
+- `nspk`: The formal specification of the NSPK protocol and a counterexample of its secrecy property. See README in that folder. This is mainly to show that we correctly specify NSLPK.
 - other files: The proofs of invariants and lemmas.
 
 ---
