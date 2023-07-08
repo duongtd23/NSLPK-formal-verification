@@ -1,0 +1,15 @@
+load nslpk.cafe . 
+load invariants.cafe .
+load proof-scripts/prsc.cafe .
+
+set-cores 4 .
+
+:proven(lm1(D1:Data, DL2:DataL, DL3:DataL))
+:infer-proof nslpk .
+
+set-output proof-scripts/scripts-generated.cafe .
+:save-proof .
+
+eof
+
+load proof-scripts/input.cafe .
