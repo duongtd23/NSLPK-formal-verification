@@ -15,7 +15,7 @@ mod* PRINCIPAL {
   eq (priK(A) = priK(B)) = (A = B) .
   eq (pubK(A) = pubK(B)) = (A = B) .
 }
-mod! NONCE {
+mod* NONCE {
   [Nonce]
 }
 mod! DATA {
@@ -136,7 +136,7 @@ mod! NETWORK {
 view TRIV2DATA from TRIV to DATA {
   sort Elt -> Data
 }
-mod NSPK {
+mod* NSPK {
   pr(NETWORK)
   pr(SET(D <= TRIV2DATA)*{sort Set -> NonceSet})
   [Sys]
