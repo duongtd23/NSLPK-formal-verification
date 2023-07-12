@@ -13,3 +13,7 @@ set-output proof-scripts/scripts-generated.cafe .
 eof
 
 load proof-scripts/input.cafe .
+
+EXP
+start  at    Jul  8 19:08:56 2023
+finish at    07/09/2023 09:51:38
