@@ -60,7 +60,7 @@ mod! DATA {
   ceq DL \in (DL2 || DL3) = true if DL \in DL3 .
 }
 mod! ENCRYPTION {
-  pr(DATA)
+  ex(DATA)
   
 --          Key   Plaintext     Ciphertext
   op aenc : Data  DataL      -> Data {constr}
